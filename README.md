@@ -5,14 +5,14 @@
 A pure javascript QR code reading library (ES module).
 This library takes in raw images and will locate, extract and parse any QR code found within.
 
-[Demo](https://code4fukui.github.io/jsQR)
+[Demo](https://code4fukui.github.io/jsQR-es/)
 
 ## Installation
 
 ## ES modules
 
 ```js
-import { jsQR } from "https://code4fukui.github.io/jsQR/jsQR.js";
+import { jsQR } from "https://code4fukui.github.io/jsQR-es/jsQR.js";
 
 // ...
 const code = jsQR(imageData.data, imageData.width, imageData.height);
