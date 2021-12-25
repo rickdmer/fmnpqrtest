@@ -11,7 +11,7 @@ This library takes in raw images and will locate, extract and parse any QR code 
 
 ## ES modules
 
-```
+```js
 import { jsQR } from "https://code4fukui.github.io/jsQR/jsQR.js";
 
 // ...
