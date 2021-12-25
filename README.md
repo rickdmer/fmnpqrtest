@@ -5,14 +5,22 @@
 A pure javascript QR code reading library.
 This library takes in raw images and will locate, extract and parse any QR code found within.
 
-[Demo](https://cozmo.github.io/jsQR)
-
+[Demo](https://code4fukui.github.io/jsQR)
 
 ## Installation
 
+## ES modules
 
+```
+import { jsQR } from "https://code4fukui.github.io/jsQR/jsQR.js";
+
+// ...
+const code = jsQR(imageData.data, imageData.width, imageData.height);
+console.log(code);
+```
 
 ### NPM
+
 Available [on npm](https://www.npmjs.com/package/jsqr). Can be used in a Node.js program or with a module bundler such as Webpack or Browserify.
 
 ```
