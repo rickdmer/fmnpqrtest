@@ -10098,3 +10098,6 @@ function findAlignmentPattern(matrix, alignmentPatternQuads, topRight, topLeft, 
 /***/ })
 /******/ ])["default"];
 });
+
+const jsQR = window.jsQR; // add by @taiuskef
+export { jsQR }; // add by @taiuskef

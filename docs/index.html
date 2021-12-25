@@ -2,7 +2,6 @@
 <head>
   <meta charset="utf-8">
   <title>jsQR Demo</title>
-  <script src="./jsQR.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet">
   <style>
     body {
@@ -62,7 +61,10 @@
     <div id="outputMessage">No QR code detected.</div>
     <div hidden><b>Data:</b> <span id="outputData"></span></div>
   </div>
-  <script>
+  <script type="module">
+    //import { jsQR } from "https://github.com/cozmo/jsQR.js";
+    import { jsQR } from "./jsQR.js";
+
     var video = document.createElement("video");
     var canvasElement = document.getElementById("canvas");
     var canvas = canvasElement.getContext("2d");
