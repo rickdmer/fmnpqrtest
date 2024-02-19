@@ -126,10 +126,11 @@ onload = async () => {
           amountData.innerText = resultObj.AMOUNT;
           sequenceData.innerText = resultObj.SEQUENCE;
           dataData.innerText = resultObj.DATA;
+        } else {
+          outputMessage.innerText = 'Invalid QR code detected';
+          outputMessage.hidden = false;
+          stateData.parentElement.hidden = true;  
         }
-      } else {
-        outputMessage.hidden = false;
-        stateData.parentElement.hidden = true;
       }
     }
     requestAnimationFrame(tick);
