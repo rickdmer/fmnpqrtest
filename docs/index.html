@@ -111,7 +111,7 @@ onload = async () => {
         outputMessage.hidden = true;
 
         const resultArray = code.data.split(' ');
-        resultObj = {};
+        let resultObj = {};
         resultObj.STATE = resultArray[0];
         resultObj.YEAR = resultArray[1];
         resultObj.PROGRAM = resultArray[2];
@@ -124,7 +124,7 @@ onload = async () => {
         programData.innerText = resultObj.PROGRAM;
         amountData.innerText = resultObj.AMOUNT;
         sequenceData.innerText = resultObj.SEQUENCE;
-        dataData.innerText = resultObj.DATA;        
+        dataData.innerText = resultObj.DATA;
       } else {
         //outputMessage.hidden = false;
         //outputData.parentElement.hidden = true;
