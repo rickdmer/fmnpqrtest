@@ -64,7 +64,7 @@ h1 {
 <canvas id="canvas"></canvas>
 <div id="outputContainer">
   <div id="outputMessage">No QR code detected.</div>
-  <div hidden><b>QR Code:</b> <span id="qrCode"></span></div>
+  <div hidden><b>QR Code:</b> "<span id="qrCode"></span>"</div>
   <div id="outputData" hidden>
     <div><b>State:</b> <span id="stateData"></span></div>
     <div><b>Year:</b> <span id="yearData"></span></div>
@@ -114,7 +114,7 @@ onload = async () => {
       });
       if (code) {
         qrCode.parentElement.hidden = false;
-        qrCode.innerText = '"' + code.data + '"';
+        qrCode.innerText = code.data;
         const color = "#FF3B58";
         drawLine(code.location.topLeftCorner, code.location.topRightCorner, color);
         drawLine(code.location.topRightCorner, code.location.bottomRightCorner, color);
