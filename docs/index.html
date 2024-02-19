@@ -119,6 +119,9 @@ onload = async () => {
         drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, color);
         drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, color);       
 
+        if (trimSpaces.checked) {
+          code.data = code.data.trim();
+        }
         const resultArray = code.data.split(' ');
         if (resultArray.length === 6) {
           outputMessage.hidden = true;
