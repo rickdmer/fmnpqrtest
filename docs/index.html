@@ -45,10 +45,6 @@ h1 {
   word-wrap: break-word;
 }
 
-#outputData {
-  display: none;
-}
-
 #noQRFound {
   text-align: center;
 }
@@ -64,7 +60,7 @@ h1 {
 <canvas id="canvas"></canvas>
 <div id="outputContainer">
   <div id="outputMessage">No QR code detected.</div>
-  <div id="outputData">
+  <div id="outputData" hidden>
     <div><b>State:</b> <span id="stateData"></span></div>
     <div><b>Year:</b> <span id="yearData"></span></div>
     <div><b>Program:</b> <span id="programData"></span></div>
@@ -82,7 +78,7 @@ import { hex } from "https://code4sabae.github.io/js/hex.js";
 onload = async () => {
   const video = document.createElement("video");
   const g = canvas.getContext("2d");
-
+  
   const drawLine = (begin, end, color) => {
     g.beginPath();
     g.moveTo(begin.x, begin.y);
