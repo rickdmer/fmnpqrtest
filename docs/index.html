@@ -78,7 +78,7 @@ import { hex } from "https://code4sabae.github.io/js/hex.js";
 onload = async () => {
   const video = document.createElement("video");
   const g = canvas.getContext("2d");
-  
+
   const drawLine = (begin, end, color) => {
     g.beginPath();
     g.moveTo(begin.x, begin.y);
@@ -99,7 +99,6 @@ onload = async () => {
     if (video.readyState === video.HAVE_ENOUGH_DATA) {
       loadingMessage.hidden = true;
       canvas.hidden = false;
-      outputContainer.hidden = false;
 
       canvas.height = video.videoHeight;
       canvas.width = video.videoWidth;
