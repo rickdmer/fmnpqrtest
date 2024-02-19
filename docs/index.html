@@ -111,23 +111,25 @@ onload = async () => {
         outputMessage.hidden = true;
 
         const resultArray = code.data.split(' ');
-        let resultObj = {};
-        resultObj.STATE = resultArray[0];
-        resultObj.YEAR = resultArray[1];
-        resultObj.PROGRAM = resultArray[2];
-        resultObj.AMOUNT = resultArray[3];
-        resultObj.SEQUENCE = resultArray[4];
-        resultObj.DATA = resultArray[5];
-        stateData.parentElement.hidden = false;
-        stateData.innerText = resultObj.STATE;
-        yearData.innerText = resultObj.YEAR;
-        programData.innerText = resultObj.PROGRAM;
-        amountData.innerText = resultObj.AMOUNT;
-        sequenceData.innerText = resultObj.SEQUENCE;
-        dataData.innerText = resultObj.DATA;
+        if (resultArray.length === 6) {
+          let resultObj = {};
+          resultObj.STATE = resultArray[0];
+          resultObj.YEAR = resultArray[1];
+          resultObj.PROGRAM = resultArray[2];
+          resultObj.AMOUNT = resultArray[3];
+          resultObj.SEQUENCE = resultArray[4];
+          resultObj.DATA = resultArray[5];
+          stateData.parentElement.hidden = false;
+          stateData.innerText = resultObj.STATE;
+          yearData.innerText = resultObj.YEAR;
+          programData.innerText = resultObj.PROGRAM;
+          amountData.innerText = resultObj.AMOUNT;
+          sequenceData.innerText = resultObj.SEQUENCE;
+          dataData.innerText = resultObj.DATA;
+        }
       } else {
-        //outputMessage.hidden = false;
-        //outputData.parentElement.hidden = true;
+        outputMessage.hidden = false;
+        stateData.parentElement.hidden = true;
       }
     }
     requestAnimationFrame(tick);
