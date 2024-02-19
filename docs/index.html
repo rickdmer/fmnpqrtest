@@ -10,7 +10,7 @@ body {
   position: relative;
 }
 
-#githubLink {
+#trimSpacesCheckboxContainer {
   position: absolute;
   right: 0;
   top: 12px;
@@ -45,6 +45,10 @@ h1 {
   word-wrap: break-word;
 }
 
+#outputData {
+  display: none;
+}
+
 #noQRFound {
   text-align: center;
 }
@@ -52,16 +56,22 @@ h1 {
 </head>
 <body>
 <h1>FMNP QR Code Tester</h1>
+<div id="trimSpacesCheckboxContainer">
+  <input type="checkbox" id="trimSpaces" name="trimSpaces" />
+  <label for="trimSpaces">Trim Spaces</label>
+</div>
 <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
 <canvas id="canvas"></canvas>
 <div id="outputContainer">
   <div id="outputMessage">No QR code detected.</div>
-  <div><b>State:</b> <span id="stateData"></span></div>
-  <div><b>Year:</b> <span id="yearData"></span></div>
-  <div><b>Program:</b> <span id="programData"></span></div>
-  <div><b>Amount:</b> <span id="amountData"></span></div>
-  <div><b>Sequence:</b> <span id="sequenceData"></span></div>
-  <div><b>Data:</b> <span id="dataData"></span></div>
+  <div id="outputData">
+    <div><b>State:</b> <span id="stateData"></span></div>
+    <div><b>Year:</b> <span id="yearData"></span></div>
+    <div><b>Program:</b> <span id="programData"></span></div>
+    <div><b>Amount:</b> <span id="amountData"></span></div>
+    <div><b>Sequence:</b> <span id="sequenceData"></span></div>
+    <div><b>Data:</b> <span id="dataData"></span></div>
+  </div>
 </div>
 
 <script type="module">
@@ -107,11 +117,12 @@ onload = async () => {
         drawLine(code.location.topLeftCorner, code.location.topRightCorner, color);
         drawLine(code.location.topRightCorner, code.location.bottomRightCorner, color);
         drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, color);
-        drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, color);
-        outputMessage.hidden = true;
+        drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, color);       
 
         const resultArray = code.data.split(' ');
         if (resultArray.length === 6) {
+          outputMessage.hidden = true;
+          outputData.hidden = false;
           let resultObj = {};
           resultObj.STATE = resultArray[0];
           resultObj.YEAR = resultArray[1];
@@ -129,7 +140,7 @@ onload = async () => {
         } else {
           outputMessage.innerText = 'Invalid QR code detected';
           outputMessage.hidden = false;
-          stateData.parentElement.hidden = true;  
+          outputData.hidden = true;
         }
       }
     }
