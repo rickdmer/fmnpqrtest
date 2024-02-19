@@ -51,15 +51,17 @@ h1 {
 </style>
 </head>
 <body>
-<h1>jsQR Demo</h1>
-<a id="githubLink" href="https://github.com/code4fukui/jsQR">View documentation on Github</a>
-<p>Pure JavaScript QR code decoding library.</p>
+<h1>FMNP QR Code Tester</h1>
 <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
 <canvas id="canvas"></canvas>
 <div id="outputContainer">
   <div id="outputMessage">No QR code detected.</div>
-  <div><b>Data:</b> <span id="outputData"></span></div>
-  <div><b>Data(bin as hex):</b> <span id="outputDataBin"></span></div>
+  <div><b>State:</b> <span id="stateData"></span></div>
+  <div><b>Year:</b> <span id="yearData"></span></div>
+  <div><b>Program:</b> <span id="programData"></span></div>
+  <div><b>Amount:</b> <span id="amountData"></span></div>
+  <div><b>Sequence:</b> <span id="sequenceData"></span></div>
+  <div><b>Data:</b> <span id="dataData"></span></div>
 </div>
 
 <script type="module">
@@ -107,9 +109,22 @@ onload = async () => {
         drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, color);
         drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, color);
         outputMessage.hidden = true;
-        outputData.parentElement.hidden = false;
-        outputData.innerText = code.data;
-        outputDataBin.innerText = hex.fromBin(code.binaryData);
+
+        const resultArray = code.data.split(' ');
+        resultObj = {};
+        resultObj.STATE = resultArray[0];
+        resultObj.YEAR = resultArray[1];
+        resultObj.PROGRAM = resultArray[2];
+        resultObj.AMOUNT = resultArray[3];
+        resultObj.SEQUENCE = resultArray[4];
+        resultObj.DATA = resultArray[5];
+        stateData.parentElement.hidden = false;
+        stateData.innerText = resultObj.STATE;
+        yearData.innerText = resultObj.YEAR;
+        programData.innerText = resultObj.PROGRAM;
+        amountData.innerText = resultObj.AMOUNT;
+        sequenceData.innerText = resultObj.SEQUENCE;
+        dataData.innerText = resultObj.DATA;        
       } else {
         //outputMessage.hidden = false;
         //outputData.parentElement.hidden = true;
